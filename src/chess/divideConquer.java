@@ -14,23 +14,19 @@ public class divideConquer extends Tour2 {
         }
 
 
-    public Board[] splitBoard(){
-        return new Board[]{new Board(super.BoardWidth/2, super.BoardHeight/2),
-                new Board(super.BoardWidth/2, super.BoardHeight/2),
-                new Board(super.BoardWidth/2, super.BoardHeight/2),
-                new Board(super.BoardWidth/2, super.BoardHeight/2)};
+    public Board splitBoard(){
+        return new Board(super.BoardWidth/2, super.BoardHeight/2, null);
     }
 
 
     public void conquerTour(Location start) {
-        int i = 0;
-        for (Board t : splitBoard()) {
-            t.startTour(start);
+        Board t = splitBoard();
+        t.startTour(start);
+        for(int i=0; i<4;i++){
             if(!t.pStructured(i)){
                 t.rotate();
             }
             connectBoards(t, i);
-            i++;
         }
     }
 

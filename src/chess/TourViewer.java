@@ -35,8 +35,8 @@ public class TourViewer extends Thread{
 
 	public static void main(String[] args) throws Exception {
 		// edit the next line to draw a board of the size that you are testing
-		int width = 50;
-		int height = 50;
+		int width = 256;
+		int height = 256;
 
 		Thread draw = new Thread(){
 			public void run(){
