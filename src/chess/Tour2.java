@@ -107,6 +107,7 @@ public class Tour2 extends Thread{
             Location[] moves = possible_moves(possible[index]);
             int degree = moves.length;
 
+            // Pick using Warnsdorff
             if (valid(possible[index]) && available(possible[index]) && degree < minMoves){
                 minIndex = index;
                 minMoves = degree;
@@ -123,7 +124,8 @@ public class Tour2 extends Thread{
 
     public static void main(String[] args) {
         Location start = new Location(4, 4);
-        Tour2 t = new Tour2(8, 8);
+        Tour2 t = new Tour2(64, 64);
+        long startTime = System.currentTimeMillis();
         t.findTour(start, false); // true if you want a closed tour
         for(int u = 0; u < t.visited.size()-1; u++) {
             Location curr = t.visited.get(u);
@@ -131,5 +133,7 @@ public class Tour2 extends Thread{
 
             System.out.println(u + " : moving from " + curr + " to " + next);
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time elapsed:" + (endTime-startTime) + " milliseconds");
     }
 }
